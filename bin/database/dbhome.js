@@ -1,16 +1,10 @@
 var mysql = require('mysql');
 var con = mysql.createPool({
-    "host" : "remotemysql.com",
-    "user" : "MeqMEv3IY4",
-    "password": "vEpF0HdCCL",
-     "database" : "MeqMEv3IY4"   });
+    "host" : ".com",
+    "user" : "",
+    "password": "",
+     "database" : ""   });
 
-
-    //  var con = mysql.createPool({
-    //   "host" : "databases.000webhost.com",
-    //   "user" : "id11537377_racnoraeuou",
-    //   "password": "#F]b)_/Sg@%<o5[[",
-    //    "database" : "id11537377_racnoraeuod"   });
 
 
     con.getConnection(function(err) {
