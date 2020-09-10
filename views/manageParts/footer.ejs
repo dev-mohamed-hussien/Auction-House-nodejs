@@ -1,0 +1,909 @@
+
+
+<script>
+
+
+
+
+
+    function displayWindowSize(){
+        // Get width and height of the window excluding scrollbars
+        var w = document.documentElement.clientWidth;
+        var h = document.documentElement.clientHeight;
+
+        if(w>850)
+        {
+        
+         document.getElementById('leftsell').style.display='block';
+   document.getElementById('rightbuy').style.display='block';
+   document.getElementById('menuham').style.display='none';
+   document.getElementById('menuham2').style.display='none';
+
+   document.getElementById('sbsb').style.display='none';
+         document.getElementById('ssss').style.display='none';
+
+   document.getElementById('rightbuy').style.position='inherit';
+         document.getElementById('leftsell').style.position='inherit';
+
+
+         document.getElementById('bclose12bclose').style.display='none';
+         document.getElementById('cclose12cclose').style.display='none';
+
+   console.log('done show items',w)
+
+        }
+        else if(w<851 && w>596) {
+         document.getElementById('menuham').style.display='none';
+         document.getElementById('menuham2').style.display='none';
+
+         document.getElementById('sbsb').style.display='block';
+         document.getElementById('ssss').style.display='block';
+
+
+         document.getElementById('rightbuy').style.display='none';
+         document.getElementById('leftsell').style.display='block';
+
+
+         document.getElementById('rightbuy').style.position='inherit';
+         document.getElementById('leftsell').style.position='inherit';
+
+         document.getElementById('bclose12bclose').style.display='none';
+         document.getElementById('cclose12cclose').style.display='none';
+        }
+        else if (w<597){
+         document.getElementById('rightbuy').style.display='none';
+         document.getElementById('leftsell').style.display='none';
+
+
+         document.getElementById('rightbuy').style.position='absolute';
+         document.getElementById('leftsell').style.position='absolute';
+
+         document.getElementById('menuham').style.display='block';
+         document.getElementById('menuham2').style.display='block';
+
+         document.getElementById('sbsb').style.display='none';
+         document.getElementById('ssss').style.display='none';
+
+         document.getElementById('bclose12bclose').style.display='block';
+         document.getElementById('cclose12cclose').style.display='block';
+
+         bclose12bclose
+
+        }
+        // Display result inside a div element
+       x = "Width: " + w + ", " + "Height: " + h;
+    }
+     
+    // Attaching the event listener function to window's resize event
+    window.addEventListener("resize", displayWindowSize);
+    
+    // Calling the function for the first time
+    displayWindowSize();
+// ////////////// responsive blocks right and left //////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+function showbuy(){
+   var w = document.documentElement.clientWidth;
+
+   if(w<851) {
+
+   document.getElementById('leftsell').style.display='none';
+   document.getElementById('rightbuy').style.display='block';
+   }else{}
+}
+function showsell(){
+   var w = document.documentElement.clientWidth;
+
+   if(w<851) {
+
+   document.getElementById('leftsell').style.display='block';
+   document.getElementById('rightbuy').style.display='none';
+   } else{}
+}
+
+
+
+function bclose12bclose(){
+if(document.documentElement.clientWidth<597){
+   document.getElementById('rightbuy').style.display='none';
+}
+else{}
+
+}
+function cclose12cclose(){
+   if(document.documentElement.clientWidth<597){
+   document.getElementById('leftsell').style.display='none';
+   }
+   else{}
+}
+
+
+////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+
+
+
+// date day etc 
+//1
+var day_initial = new Date();
+var dayreal=day_initial.getDate();
+document.getElementById('init_day').innerText=dayreal;
+
+$('.scnd-font-color').removeClass("today")
+$('#d'+dayreal).addClass("today").removeClass("scnd-font-color")
+
+
+// day week
+var weekday=new Array(7);
+weekday[0]='sunday';
+weekday[1]='monday';
+weekday[2]='tuesday';
+weekday[3]='wednesday';
+weekday[4]='thursday';
+weekday[5]='friday';
+weekday[6]='saturday';
+document.getElementById('init_week').innerText=weekday[day_initial.getDay()];
+// month and year date 
+var monthname=new Array(12);
+monthname[0]='January';
+monthname[1]='February';
+monthname[2]='March';
+monthname[3]='April';
+monthname[4]='May';
+monthname[5]='June';
+monthname[6]='July'
+monthname[7]='August';
+monthname[8]='September';
+monthname[9]='October';
+monthname[10]='November';
+monthname[11]='December';
+var yearr=day_initial.getFullYear();
+document.getElementById('mydatet').innerText=monthname[day_initial.getMonth()]+" "+ yearr;
+
+// left span 
+// spanMonth
+document.getElementById('spanMonth').innerText=weekday[day_initial.getDay()];
+
+//  virtual
+
+
+
+
+
+
+
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// active page here home 
+
+document.getElementById("pr1").classList.add("active");
+document.getElementById("pr1i").classList.add("activefont");
+
+
+
+// msg box js  close notification
+$(".close").click(function(){
+   $(this).parent().parent().css('display','none')
+   $(this).parent().parent().css('height','0px')
+})
+
+//______________________________________________________________________
+
+
+
+// change layouts
+
+function layoutme(id)
+{
+   $( ".midmain" ).hide();
+   $( ".acti" ).hide();
+   $( "#"+id ).show();
+   if(id=='add'){
+document.getElementById(id).style.display='table-header-group'
+
+   }
+ else  if(id=='onSaleMain'){  
+      onsale();
+      cclose12cclose();
+     }
+else if(id=='soldMain'){  
+   
+   soldMain() ;
+   cclose12cclose();
+ }
+else if(id=='won2'){ 
+    won2();
+    bclose12bclose();
+     }
+else if(id=='bidded2'){ 
+    bidded2();
+    bclose12bclose();
+  }
+
+}
+
+
+
+
+
+
+
+//########################################################################################################
+//##################################         won         #################################################
+//########################################################################################################
+function won2(){
+   console.log("won")
+document.getElementById('won2').innerHTML ="<p style='display:none'></p>"
+
+
+
+
+
+
+$.ajax({      url: '/won',
+              type: 'get',
+              contentType: false,
+              cache: false,
+              processData:false,
+              success: function(data, textStatus, jqXHR)
+              {
+
+console.log('hi',data)
+for (let index = 0; index < data.length; index++) {
+document.getElementById('won2').innerHTML +=`
+
+<div id ='sold' class="profile block " style=" padding-top: 15px;  height: 362px;  "> 
+                      <a class="add-button" href="#28"></a>
+                      <div class="profile-picture big-profile-picture clear" style=" width: 258px;   height: 200px;  border-radius: 6px;  padding-top: 0px;" >
+                          <img alt="proudct picture" src="${data[index].image1}" style=" width: 258px;  height: 200px;" > </div>
+                          <h1 class="user-name" style="font-size: 11px;margin-bottom: 1px;margin-top: 10px;">Name : ${data[index].name}</h1>                      <div style="    text-align: center;    margin-bottom: 8px;">
+                         <h1 class="user-name" style="font-size: 11px;margin-bottom: -9px;margin-top: 0px;margin-right: 8px;display: inline-block;"Price : ${data[index].maxPrice} $</h1>
+                         <h1 class="user-name" style="font-size: 11px;display: inline-block;margin-bottom: 1px;margin-left: 8px;margin-top: 6px;"> Product ID : ${data[index].idProudct}</h1> 
+                     </div>     
+
+<ul class="profile-options horizontal-list">
+               <p></p>
+<li style=" width: 100%;"><a onclick="viewSeller(${data[index].id},'${data[index].username}','${data[index].phone}','${data[index].img}','${data[index].email}')" class="likes" href="#42" style="border-top: 4px solid green;width: 100%;"><p style=" font-size: 14px;"><span class="icon fontawesome-heart-empty scnd-font-color" >
+   </span>View Info Seller</p></a></li><p></p>      </ul> 
+     </div>
+
+`}
+
+
+
+
+
+
+
+        // Do whatever you want with your 'data'
+              },  error: function(jqXHR, textStatus, errorThrown)  { 
+                 
+               
+              console.log(errorThrown) 
+               
+ // Oops! Some Error'
+             }     });
+
+
+
+}
+
+
+
+
+
+
+// view buyer
+function viewSeller (ide,username,phone,img,email){
+   showsell()
+document.getElementById('sellerProfile').innerHTML=`
+
+<div class="profile block midmain" style='height: 364px;'>
+      <!-- PROFILE (buyer-CONTAINER) -->
+      <a class="add-button" href="#28"><span onclick='closeSellerPage()' style='    margin-right: 10px;      margin-top: 9px;    float: right;' class=" entypo-plus scnd-font-color"><i class="fa fa-times"></i></span></a>
+      <div class="profile-picture big-profile-picture clear" style='height: 143px;width: 143px;'>
+        <img width="143px" height="143px" alt=" user picture" src="${img}">
+      </div>
+      <h1 style='font-size:14px;    margin-bottom: 0px;' class="user-name">${username}</h1>
+      <div class="profile-description">
+ 
+        <p style='font-size:10px;     margin-bottom: 10px; text-align:left;margin-left:-30px ;  margin-top: 10px; ' class="scnd-font-color">Call buyer now to deal with him : </p>
+        <p style='font-size:14px; color:white;  margin-bottom: 5px;  margin-top: 0px;' class="scnd-font-color">Phone <i class="fa fa-mobile"></i> : ${phone}  </p>
+        <p style='font-size:14px;margin-bottom: 44px; color:white;  margin-top: 0px;' class="scnd-font-color">Email <i class="fa fa-envelope"></i> : ${email}</p>
+      
+      </div>
+      <ul class="profile-options horizontal-list">
+        <li style='width:50%;' >      <a style='width:100%;' class="comments" href="#40"><p style='font-size:11px; display:none;'>      <span class="icon fontawesome-comment-alt scnd-font-color"> </span>Sold Products        </p></a>        </li>        <p></p>
+        <li style='width:50%;' >      <a style='width:100%;' class="views" href="#41">   <p style='font-size:11px; display:none;'>      <span class="icon fontawesome-eye-open scnd-font-color">    </span>Added Products       </p></a>        </li>        <p></p>
+      </ul>
+    </div>
+
+`
+document.getElementById('sellerProfile').style.display='block';
+
+
+
+// $.post('/buyerInfo',{ide:ide},function(x){
+
+
+
+// })
+
+
+}
+
+// close buyer profile page
+
+function closeSellerPage(){
+
+   document.getElementById('sellerProfile').style.display='none';
+
+}
+
+
+
+
+
+
+//########################################################################################################
+//########################################################################################################
+//########################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//########################################################################################################
+//##################################       bidded        #################################################
+//########################################################################################################
+function bidded2(){
+   console.log("bidded")
+document.getElementById('bidded2').innerHTML ="<p style='display:none'></p>"
+
+
+
+
+
+
+
+
+$.ajax({      url: '/bidded',
+              type: 'get',
+              contentType: false,
+              cache: false,
+              processData:false,
+              success: function(data, textStatus, jqXHR)
+              {
+
+console.log('hi',data)
+for (let index = 0; index < data.length; index++) {
+document.getElementById('bidded2').innerHTML +=`
+
+<div id ='sold' class="profile block " style=" padding-top: 15px;  height: 362px;  "> 
+                      <a class="add-button" href="#28"></a>
+                      <div class="profile-picture big-profile-picture clear" style=" width: 258px;   height: 200px;  border-radius: 6px;  padding-top: 0px;" >
+                          <img alt="proudct picture" src="${data[index].image1}" style=" width: 258px;  height: 200px;" > </div>
+                          <h1 class="user-name" style="font-size: 11px;margin-bottom: 1px;margin-top: 10px;">Name : ${data[index].name}</h1>                      <div style="    text-align: center;    margin-bottom: 8px;">
+                         <h1 class="user-name" style="font-size: 11px;display: inline-block;margin-bottom: 1px;margin-left: 8px;margin-top: 6px;"> Product id : ${data[index].id}</h1> 
+                     </div>     
+
+<ul class="profile-options horizontal-list">
+               <p></p>
+<li style=" width: 100%;"><a onclick="cheakBidded(${data[index].id})" class="likes" href="#42" style="border-top: 4px solid green;width: 100%;"><p style=" font-size: 14px;"><span class="icon fontawesome-heart-empty scnd-font-color" >
+   </span>View  Offeres</p></a></li><p></p>      </ul> 
+     </div>
+
+`}
+
+        // Do whatever you want with your 'data'
+              },  error: function(jqXHR, textStatus, errorThrown)  { 
+                 
+               
+              console.log(errorThrown) 
+               
+ // Oops! Some Error'
+             }     });
+
+
+
+   
+}
+
+
+
+function cheakBidded(id){
+
+
+
+console.log(id)
+$.post('/biview',{idP:id},function(x){
+   document.getElementById('viewer').innerHTML =`
+   <i onclick=" closeViE()" class="closeviewer fas fa-times" style="font-size: 22px;position: absolute;right: 3%;top: 3%;"></i>
+<div class='scroll' style="
+    height: 234px;
+    padding-top: 22px;
+    text-align: center;
+    overflow: auto;
+" id='vi' > </div>
+
+`
+
+for (let index = 0; index < x.result.length; index++) {
+
+if(x.result[index].idUser==x.y)
+{
+
+   document.getElementById('vi').innerHTML +=`
+   
+  <label style="
+    color: antiquewhite;    margin-left: 0px;
+" id='lberf'>
+             Me ffered : ${x.result[index].price}
+  </label>
+
+   `
+   continue;
+}
+
+
+   document.getElementById('vi').innerHTML +=`
+   
+  <label style="
+    color: antiquewhite;    margin-left: 0px;
+" id='lberf'>
+             Some one offered : ${x.result[index].price}
+  </label>
+
+   `
+}
+   
+document.getElementById('viewer').innerHTML +=`
+
+<ul class="profile-options horizontal-list" style=" top: 0px; position: relative;">
+  <li style="width: 66%;"><p  class="views" href="#41" style="width: 100%;border-top: 4px solid rgb(0, 0, 0);"><input id="bidinputBidding" type="number" style="    height: 21%;    width: 101%;    margin-left: -2px;    margin-bottom: 0px;    margin-top: 0px;    font-size: 20px;    margin-right: 0px;    background: rgba(0, 0, 0, 0.24);"></p></li><p></p>
+  <li style="width: 34%;"><a onclick="addMoreBid(${id})" class="likes" href="#42" style="border-top: 4px solid green;width: 100%;"><p style="    height: 55px;"><span class="icon fontawesome-heart-empty scnd-font-color"></span>Bid Now</p></a></li><p></p>
+</ul>
+
+`
+
+document.getElementById('viewer').style.display='block'
+
+})
+
+
+}
+
+
+// add more bid
+
+function addMoreBid(id){
+var price =document.getElementById('bidinputBidding').value
+console.log(price)
+$.post('/addMoreBid',{idP:id,Oprice:price},function(x){
+
+console.log('bidded done')
+document.getElementById('viewer').style.display='none'
+bidded2()
+   
+})
+
+}
+
+
+// close viewer
+
+function closeViE(){
+
+
+   document.getElementById('viewer').style.display='none'
+
+
+}
+
+//########################################################################################################
+//########################################################################################################
+//########################################################################################################
+
+
+
+
+
+
+
+//########################################################################################################
+//##################################      sold main      #################################################
+//########################################################################################################
+
+
+function  soldMain(){
+
+console.log("sold")
+
+document.getElementById('soldMain').innerHTML ="<p style='display:none'></p>"
+
+
+$.ajax({      url: '/sold',
+              type: 'get',
+              contentType: false,
+              cache: false,
+              processData:false,
+              success: function(data, textStatus, jqXHR)
+              {
+
+console.log('hi',data)
+for (let index = 0; index < data.length; index++) {
+document.getElementById('soldMain').innerHTML +=`
+
+<div id ='sold' class="profile block " style=" padding-top: 15px;  height: 362px;  "> 
+                      <a class="add-button" href="#28"></a>
+                      <div class="profile-picture big-profile-picture clear" style=" width: 258px;   height: 200px;  border-radius: 6px;  padding-top: 0px;" >
+                          <img alt="proudct picture" src="${data[index].image1}" style=" width: 258px;  height: 200px;" > </div>
+                          <h1 class="user-name" style="font-size: 11px;margin-bottom: 1px;margin-top: 10px;">Name : ${data[index].name}</h1>                      <div style="    text-align: center;    margin-bottom: 8px;">
+                         <h1 class="user-name" style="font-size: 11px;margin-bottom: -9px;margin-top: 0px;margin-right: 8px;display: inline-block;">Price : ${data[index].price} $</h1>
+                         <h1 class="user-name" style="font-size: 11px;display: inline-block;margin-bottom: 1px;margin-left: 8px;margin-top: 6px;"> Proudct ID : ${data[index].idProudct}</h1> 
+                     </div>     
+
+<ul class="profile-options horizontal-list">
+               <p></p>
+<li style=" width: 100%;"><a onclick="viewBuyer(${data[index].id},'${data[index].username}','${data[index].phone}','${data[index].img}','${data[index].email}')" class="likes" href="#42" style="border-top: 4px solid green;width: 100%;"><p style=" font-size: 14px;"><span class="icon fontawesome-heart-empty scnd-font-color" >
+   </span>View Info Buyer</p></a></li><p></p>      </ul> 
+     </div>
+
+`}
+
+
+
+
+
+
+
+        // Do whatever you want with your 'data'
+              },  error: function(jqXHR, textStatus, errorThrown)  { 
+                 
+               
+              console.log(errorThrown) 
+               
+ // Oops! Some Error'
+             }     });
+
+
+            }
+
+
+
+// view buyer
+function viewBuyer (ide,username,phone,img,email){
+   showbuy()
+document.getElementById('buyerProfile').innerHTML=`
+
+<div class="profile block midmain" style='height: 364px;'>
+      <!-- PROFILE (buyer-CONTAINER) -->
+      <a class="add-button" href="#28"><span onclick='closeBuyerPage()' style='    margin-right: 10px;      margin-top: 9px;    float: right;' class=" entypo-plus scnd-font-color"><i class="fa fa-times"></i></span></a>
+      <div class="profile-picture big-profile-picture clear" style='height: 143px;width: 143px;'>
+        <img width="143px" height="143px"  alt=" user picture" src="${img}">
+      </div>
+      <h1 style='font-size:14px;    margin-bottom: 0px;' class="user-name">${username}</h1>
+      <div class="profile-description">
+ 
+        <p style='font-size:10px;     margin-bottom: 10px; text-align:left;margin-left:-30px ;  margin-top: 10px; ' class="scnd-font-color">call buyer now to deal with him : </p>
+        <p style='font-size:14px; color:white;  margin-bottom: 5px;  margin-top: 0px;' class="scnd-font-color">Phone <i class="fa fa-mobile"></i> : ${phone}  </p>
+        <p style='font-size:14px;margin-bottom: 44px; color:white;  margin-top: 0px;' class="scnd-font-color">Email <i class="fa fa-envelope"></i> : ${email}</p>
+      
+      </div>
+      <ul class="profile-options horizontal-list">
+        <li style='width:50%;' >      <a style='width:100%;' class="comments" href="#40"><p style='font-size:11px; display:none;'>      <span class="icon fontawesome-comment-alt scnd-font-color"> </span>Sold Products        </p></a>        </li>        <p></p>
+        <li style='width:50%;' >      <a style='width:100%;' class="views" href="#41">   <p style='font-size:11px; display:none;'>      <span class="icon fontawesome-eye-open scnd-font-color">    </span>Added Products       </p></a>        </li>        <p></p>
+      </ul>
+    </div>
+
+`
+document.getElementById('buyerProfile').style.display='block';
+
+
+
+// $.post('/buyerInfo',{ide:ide},function(x){
+
+
+
+// })
+
+
+}
+
+// close buyer profile page
+
+function closeBuyerPage(){
+
+   document.getElementById('buyerProfile').style.display='none';
+
+}
+
+
+//########################################################################################################
+//########################################################################################################
+//########################################################################################################
+
+
+
+//########################################################################################################
+//##################################       on sale       #################################################
+//########################################################################################################
+//on sale function
+function onsale(){
+   document.getElementById('onSaleMain').innerHTML ="<p style='display:none'></p>"
+
+
+
+console.log('onsale fetch working')
+
+
+$.ajax({      url: '/onSale',
+              type: 'get',
+              contentType: false,
+              cache: false,
+              processData:false,
+              success: function(data, textStatus, jqXHR)
+              {
+
+console.log('hi',data)
+for (let index = 0; index < data.length; index++) {
+document.getElementById('onSaleMain').innerHTML +=`
+
+<div id ='onSale' class="profile block " style=" padding-top: 15px;  height: 362px;  "> 
+                      <a class="add-button" href="#28"></a>
+                      <div class="profile-picture big-profile-picture clear" style=" width: 258px;   height: 200px;  border-radius: 6px;  padding-top: 0px;" >
+                          <img alt="proudct picture" src="${data[index].image1}" style=" width: 258px;  height: 200px;" > </div>
+                      <h1 class="user-name" style=" font-size: 13px;  margin-bottom: 1px; " > Product ID : ${data[index].id}</h1>
+       <h1 class="user-name" style=" font-size: 13px;  margin-bottom: -9px; margin-top: 2px;">${data[index].name}</h1>
+       <ul class="profile-options horizontal-list">
+         <form id="${data[index].id}" action="" method="post"> 
+            <input type='hidden' value='${data[index].id}'  name='idP'  >
+                          <li style='width:30%'><a onclick='onsaledelete(${data[index].id})' class="views" href="#41" style=" width: 100%; border-top: 4px solid rgb(204, 50, 75);">
+<p><span class="icon fontawesome-eye-open scnd-font-color"></span>Delete</p></a></li><p></p>
+<li style='width:70%'><a onclick='onsaleview(${data[index].id})'  class="likes" href="#42" style='border-top: 4px solid green;width: 100%; '  ><p><span class="icon fontawesome-heart-empty scnd-font-color"></span>View</p></a></li><p></p>
+</form>     </ul>   </div>
+
+`}
+        // Do whatever you want with your 'data'
+              },  error: function(jqXHR, textStatus, errorThrown)  { var x = '// Oops! Some Error' }     });
+}
+
+// delete 
+function onsaledelete(id){
+var data = $('form#'+id).serialize();
+console.log(id)
+$.post('/onsaledelete',data,function(x){
+
+
+console.log(x.msg,'done')
+onsale()
+
+})
+}
+
+// view
+
+function onsaleview(id){
+var data = $('form#'+id).serialize();
+console.log(id)
+$.post('/onsaleview',data,function(x){
+
+   document.getElementById('viewer').innerHTML =`
+   <form id="${id}sell" action="" method="post" class="scrollbar"  style=" margin-top: 20px;  height: 200px;  margin-left: 0; margin-right: 0px;  overflow: overlay;"> 
+      
+   `
+   if(x.length==0){     
+
+      document.getElementById(id+'sell').innerHTML +=`
+      <p style="
+    text-align: center;
+    padding-top: 70px;
+">No offers yet on this product </p>
+      
+      `
+
+   }  else {
+
+for (let index = 0; index < x.length; index++) {
+   document.getElementById(id+'sell').innerHTML +=`
+   
+  <label style="
+    color: antiquewhite;    margin-left: 80px;
+" id='lberf'>
+    <input type="radio" class="option-input radio" name="sell" value="[${x[index].idProudct},${x[index].price},${x[index].idUser}]" />
+             Some one offered ${x[index].price}
+  </label>
+
+   `
+}
+   }
+document.getElementById('viewer').innerHTML +=`
+<ul class="profile-options horizontal-list" style=" top: 0px; position: relative;" >
+      <li style="width: 20%;" ><a onclick="closeviewer()" class="views" href="#41" style="width: 100%;border-top: 4px solid rgb(204, 50, 75);"><p><span class="icon fontawesome-eye-open scnd-font-color"></span>Close</p></a></li><p></p>
+  <li style="width: 80%;"><a onclick="sellit(${id})" class="likes" href="#42" style="border-top: 4px solid green;width: 100%;"><p><span class="icon fontawesome-heart-empty scnd-font-color"></span>Sell for selected price</p></a></li><p></p>
+      </ul>
+
+`
+
+document.getElementById('viewer').style.display='block'
+
+console.log(x,'done')
+
+})
+}
+
+// close view
+function closeviewer(){
+   document.getElementById('viewer').style.display='none'
+}
+// sell item with selected price
+function sellit(idform){
+
+
+   var data = $('form#'+idform+'sell').serialize();
+console.log(idform,'from xfd')
+$.post('/sellitem',data,function(x){
+if(x.fail=='fail')
+{
+//proudct not  sold cuz no offeres
+
+}
+
+else{
+
+   console.log(x,'done')
+//refresh on sale proudcts
+onsale()
+console.log('cheak sold proudcts')
+document.getElementById('viewer').style.display='none'
+
+
+}
+
+})
+}
+
+
+//########################################################################################################
+//########################################################################################################
+//########################################################################################################
+
+
+
+
+//########################################################################################################
+//##################################     add proudct     #################################################
+//########################################################################################################
+
+var cate ;
+
+function set(ca){
+cate = ca;
+}
+
+
+
+$('form').submit(function(e) {
+   var name = document.getElementById('nameadd').value
+var des = document.getElementById('descadd').value
+var max = document.getElementById('spinneradd').value
+var min = document.getElementById('spinner2add').value
+var im1 = document.getElementById('file_upload1').value
+var im2 = document.getElementById('file_upload2').value
+var im3 = document.getElementById('file_upload3').value
+
+if (des=='' || name=='' || min==''|| max=='' ){
+
+console.log('fail add')
+document.getElementById('swa').innerText='Proudct info not compeleted yet'
+document.getElementById('wa').style.display='block'
+document.getElementById('wa').style.height='46px'
+document.getElementById('ser').innerText='Product not added'
+document.getElementById('er').style.display='block'
+document.getElementById('er').style.height='46px'
+e.preventDefault();
+
+}
+else{
+   var formObj = $(this);
+      if(window.FormData !== undefined)  // for HTML5 browsers
+      {
+   
+          var formData = new FormData(this);
+          $.ajax({
+              url: '/add',
+              type: 'POST',
+              data:  formData,
+              mimeType:"multipart/form-data",
+              contentType: false,
+              cache: false,
+              processData:false,
+              success: function(data, textStatus, jqXHR)
+              {
+                 // make inputs empty
+               document.getElementById('nameadd').value=''
+               document.getElementById('descadd').value=''
+               document.getElementById('spinneradd').value=''
+               document.getElementById('spinner2add').value=''
+document.getElementById('file_upload1').value=''
+document.getElementById('file_upload2').value=''
+document.getElementById('file_upload3').value=''
+// clear another notifications
+document.getElementById('wa').style.display='none'
+document.getElementById('wa').style.height='0px'
+document.getElementById('er').style.display='none'
+document.getElementById('er').style.height='0px'
+//succsess notification
+               document.getElementById('ssu').innerText='Product added succesfully'
+               document.getElementById('su').style.display='block'
+               document.getElementById('su').style.height='46px'
+
+console.table(data)
+
+               // Do whatever you want with your 'data'
+              },
+              error: function(jqXHR, textStatus, errorThrown) 
+              {
+               document.getElementById('wa').style.display='none' 
+               document.getElementById('wa').style.height='0px'
+               document.getElementById('er').style.display='none'
+               document.getElementById('er').style.height='0px'
+
+               document.getElementById('ser').innerText='Product not added'
+               document.getElementById('er').style.display='block'
+               document.getElementById('er').style.height='46px'
+                    // Oops! Some Error
+              }           
+         });
+          e.preventDefault();
+  
+     }
+     else  //for olden browsers
+      {
+          // Generate a random id for our hidden iframe form
+          var  iframeId = '_form_' + (Math.random().toString());
+         // Create an igrame      
+          var iframe = $('<iframe src="javascript:false;" name="'+iframeId+'" />');
+         iframe.hide();
+         formObj.attr('target',iframeId);
+         iframe.appendTo('body');
+          iframe.load(function(e)
+          {
+              var doc = getDoc(iframe[0]);
+              var docRoot = doc.body ? doc.body : doc.documentElement;
+              var data = docRoot.innerHTML;
+              // Do whatever with `data`
+          });
+      } 
+   
+   }   
+});
+
+//########################################################################################################
+//########################################################################################################
+//########################################################################################################
+
+
+
+
+
+// change photo of profile
+
+
+</script>
+
+
+
+
+</body></html>

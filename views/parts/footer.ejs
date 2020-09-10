@@ -1,0 +1,47 @@
+
+<script>
+
+
+
+  
+   // login animation
+
+   $('#signup').click(function() {
+     $('.pinkbox').css('transform', 'translateX(80%)');
+     $('.signin').addClass('nodisplay');
+     $('.signup').removeClass('nodisplay');
+   });
+   
+   $('#signin').click(function() {
+     $('.pinkbox').css('transform', 'translateX(0%)');
+     $('.signup').addClass('nodisplay');
+     $('.signin').removeClass('nodisplay');
+   });
+
+
+   //responsive login animation
+
+  // login animation
+
+  $('#spansignupx').click(function() {
+    if(document.documentElement.clientWidth<769){
+
+      $('.pinkbox').css('transform', 'rotate(360deg)');
+$('.signin').addClass('nodisplay');
+$('.signup').removeClass('nodisplay');
+} else{}
+   });
+   $('#spansigninx').click(function() {
+    if(document.documentElement.clientWidth<769){
+      $('.pinkbox').css('transform', 'rotate(-360deg)');
+     $('.signup').addClass('nodisplay');
+     $('.signin').removeClass('nodisplay');
+    } else{}
+   });
+   
+  //  $('.pinkbox').css('transform', 'translateX(0%)');
+
+   </script>
+
+</body>
+</html>

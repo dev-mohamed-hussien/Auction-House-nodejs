@@ -1,0 +1,129 @@
+<%- include('parts/header')%>
+<%- include('parts/navbar')%>
+<!-- animation preload -->
+<div class="se-pre-con">
+
+
+
+
+    <div class="loading-animation" style=" width: 14%;    text-align: center;    justify-content: center;    display: block;    position: fixed;    left: 44%;    top: 40%;">
+    <img src="/ico/favicon1.png" alt="" class="logo" style="    color: rgb(136, 136, 136);    text-align: left;   font-weight: 600;    float: none;    padding-top: 5px;    padding-left: 15px;    width: 48px;    height: 48px;">
+    <div class="loading-bar" style="    height: 2px;    background: rgb(207, 207, 207);    margin-top: 8px;    position: relative;    overflow: hidden;"></div>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container" style="
+padding-top: 100px;
+">
+<h1 style="
+    font-size: 20px;
+    text-align: center;
+    color: aliceblue;
+    margin-top: 0px;
+">with online auction buy and sell with your best way</h1> 
+
+        <select id="myoption" name="category" class="form-control" onchange="cheakCat(value)" >
+            <option value="all" >All</option>
+            <option value="clothes">Clothes</option>
+            <option value="phones">Phones</option>
+            <option value="bicycles">Bicycles</option>
+            <option value="computers">Computers</option>
+
+        </select>
+ 
+    <div id='viewProudcts' class="row scrollbar">
+
+    </div>
+</div>
+
+
+
+<div id="viewer"  class="scrollbar">
+
+</div>
+
+
+
+
+
+
+<div class="copyright-area" style="
+    width: 100%;
+    text-align: center;
+">
+    
+
+<div class="copyright-text">
+    
+
+    
+    <div class="footer-menu" style="
+    margin-top: 5px;
+">
+    
+    <p style="
+
+">Copyright © 2020, All Right Reserved <a href="https://immense-crag-19717.herokuapp.com/">Auction House</a></p>
+    
+    <ul style="
+    display: inline-table;
+">
+   
+    <li><a href="#">Terms</a></li>
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Policy</a></li>
+    <li><a href="#">Contact</a></li>
+    </ul>
+    </div>
+
+    </div></div>  
+
+<style>
+
+/*! CSS Used from: Embedded */
+ul{margin:0px;padding:0px;}
+.copyright-area{background:#202020;    padding: 11px 0;}
+.copyright-text p{margin:0;font-size:14px;color:#878787;     display: inline-table;
+    margin-right: 3%;}
+.copyright-text p a{color:#ff5e14;}
+.footer-menu li{display:inline-block;margin-left:0px;}
+.footer-menu li:hover a{color:#ff5e14;}
+.footer-menu li a{font-size:14px;color:#878787;}
+@media screen and (max-width: 596px){
+
+
+}
+
+</style>
+
+<script  src="/socket.io/socket.io.js"></script>
+
+<script   src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script  src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+<script  src="/home/home.js"></script>
+<%- include('parts/footer')%>

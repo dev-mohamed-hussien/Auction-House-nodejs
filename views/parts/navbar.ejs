@@ -1,0 +1,304 @@
+
+
+
+<style>
+
+
+/* nav */
+  .navigation {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    height: 31px;
+    padding: 31px 0;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+    webkittransition: all 0.8s;
+    transition: all 0.8s;
+    z-index: 1;
+    background: rgb(32, 40, 68)
+  }
+
+
+
+.navigation-links {
+  width: 27%;
+  text-align: right;
+  padding: 0;
+  padding-right: 10px;
+  padding-top: 7px;
+}
+
+  .navigation-links li {
+    color: rgb(136, 136, 136);
+    display: table-caption;
+    /* padding: 10px 20px; */
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-bottom: 0px;
+    padding-top: 6px;
+    margin-top: 0px;
+    height: 33px; 
+    text-align: center;
+    width: 33px;
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+    /* border-radius: 8px; */
+    border-radius: 25px;
+    box-shadow: 0 0 4px rgba(14, 143, 243, 0.8) inset;
+  }
+  .newone  li {
+    color: rgb(136, 136, 136);
+    display: inline-block;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 38px;
+    padding-top: 16px;
+    margin-top: -2px;
+    height: 25px;
+    transition: all 0.8s;
+  }
+
+  .newone li.active {
+
+    padding-top: 16px;
+    margin-bottom: -19px;
+    border-bottom-width: 2px;
+    border-bottom-style: inset;
+    border-bottom-color: rgb(24, 190, 245);
+  }
+
+.newone li:hover {
+  background-color:rgba(100, 97, 97, 0.34);
+  color: #fff;
+  cursor: pointer;
+  
+  border-radius: 8px;
+    box-shadow: 0 0 2px rgba(148, 143, 143, 0.8) inset;
+
+}
+  
+
+  .logo {
+    color: rgb(136, 136, 136);
+    width: 28%;
+    text-align: left;
+    font-weight: 600;
+    float: left;
+    padding-top: 5px;
+    padding-left: 15px;
+    line-height: 40px;
+    font-size: 20px;
+  }
+
+  i.fas.fa-paper-plane {
+    font-size: 25px;
+}
+
+i.fas.fa-user {
+    font-size: 25px;
+}
+
+
+
+
+i.fab.fa-facebook-messenger {
+  font-size: 25px;
+}
+
+
+
+
+
+i.fas.fa-home {
+  font-size: 25px;
+}
+
+
+
+  @media screen and (max-width: 735px){
+.navigation-links li {
+  padding-bottom: 0.5px;
+    padding-top: 6px;
+    padding-top: 0px;
+    margin-top: 9px;
+    width: 24px;
+    height: 24px;
+}
+  }
+
+
+
+
+  @media screen and (max-width: 735px){
+
+
+.newone li {
+  padding-bottom: 33px;
+  padding-left: 18px;
+    padding-right: 18px;
+}
+
+i.fas.fa-paper-plane {
+    font-size: 16px;
+}
+
+i.fas.fa-user {
+    font-size: 16px;
+}
+
+
+
+i.fas.fa-home {
+  font-size: 16px;
+}
+
+.fa-tasks {
+    font-size: 16px;
+}
+
+.logo {
+    font-size: 15px;
+    width: 30%;
+}
+
+.navigation-links {
+  width: 19%;
+
+}
+
+
+
+  }
+
+
+
+
+
+  @media screen and (max-width: 447px){
+
+
+    .navigation-links {
+
+      width: 30%;
+}
+#addres{
+font-size: 12px;
+
+}
+.newone li {
+  padding-bottom: 33px;
+  padding-left: 14px;
+    padding-right: 14px;
+}
+
+
+.logo {
+    font-size: 13px;
+    width: 50%;
+}
+
+.fa-tasks {
+    font-size: 16px;
+}
+
+
+
+
+  }
+
+
+
+  i.activefont {
+    color: rgb(30, 92, 112);
+}
+
+#addres:hover{
+
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+<nav class="navigation" id="navigation" style="">
+  <div class="containeeer" style="
+    display: flex;
+    margin: -22px auto;
+    margin-right: 0;
+    margin-left: 0px;
+">
+    <div style="" class="fa fa-gavel logo">
+      <a  id='addres' href='/'  style="
+   ">Auction House
+   
+  
+
+  
+  </a>
+    </div>
+
+    <ul class=" newone" style="
+  width: 60%;
+  text-align: center;
+  padding-left: 0px;
+">
+      <a href="/"><li id="ho1" style="
+">
+          <i id="ho1i" class="fas fa-home" style="
+   
+"></i></li></a>
+      <a href="/manage"><li id="pr1" style="">
+          <i style="font-size: 24px;"  id="pr1i" class="fa fa-tasks" style="
+ 
+"></i></li></a>
+
+
+    </ul>
+
+    <% if( img == 'x')  { %>
+
+
+
+
+      <ul class="navigation-links" style="padding-top: 13px;" >
+       
+        <a href="/login" style="color: wheat; text-decoration: underline; font-weight: 600;  font-size: 13px; " >login    </a> <i class="fa fa-user" aria-hidden="true" style=" color: white;   padding-left: 6px; "></i>
+
+      </ul>
+
+
+
+
+
+<% } else{ %>  
+
+  <ul class="navigation-links">
+       
+    <a><li style="  background: url('<%= img %>');   background-repeat: no-repeat; background-size: cover;  font-size: -1px;">  <i style="font-size: 0px;" class="fab fa-facebook-messenger "></i></li></a>
+
+    <a href="/logout"><li>
+      <i style="padding-top: 3px; padding-left: 4px;"  class="fas fa-sign-out-alt hell"></i>
+    </li></a>
+  </ul>
+  <%  } %>
+
+
+
+
+
+  </div>
+</nav>

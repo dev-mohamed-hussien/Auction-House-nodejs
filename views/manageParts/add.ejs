@@ -1,0 +1,74 @@
+ 
+    <div  style="height: 405px;" id ='add' class="account block acti"> 
+      <h2 class="titular">add your proudct</h2>
+      <div class="input-container">
+      <form style="text-align: center;" id="data" action="" method="post">
+      <input id="nameadd" name='namep' type="text" placeholder="name" style="
+      width: 70%;
+      " class="email text-input">
+      
+      <div class="select">
+         <select name="slct" id="slct"  onchange="set(value)">
+           <option selected disabled>category</option>
+           <option value="clothes">Clothes</option>
+           <option value="phones">Phones</option>
+           <option value="bicycles">Bicycles</option>
+           <option value="computers">Computers</option>
+         </select>
+       </div>
+      
+      <textarea placeholder="description" name="desc" id="descadd" cols="30" rows="300"></textarea>
+     
+      <span style="display: inline;/* width: 157px; */font-size: 13px;margin-left: 5px;">min</span>
+      <input type="number" pattern="[0-9]*" id="spinner2add" name="min" placeholder="min $" min="1" max="99900" step="1" oninput="maxLengthCheck(this)" maxlength="10">
+      
+
+
+       <span style="display: inline;/* width: 157px; */font-size: 13px;margin-left: 25px;">max</span>
+       <input type="number" pattern="[0-9]*" id="spinneradd" name="max" placeholder="max $" min="1" max="99900" step="1" oninput="maxLengthCheck(this)" maxlength="10">
+      
+
+
+       <span style="
+    width: 100%;
+
+    font-size: 13px;
+    margin-top: -3px;
+    margin-bottom: 5px;
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: -webkit-center;
+   ">upload product images</span>
+
+
+
+
+      <div style="
+    margin-left: -80px;      " class='upload-field-customized'>
+         <input type="file" multiple="multiple" name="file1" id="file_upload1">
+         
+         <span>
+           <img src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/cloud-upload-32.png" alt="" />
+         </span>
+       </div>
+      
+       <div class='upload-field-customized'>
+         <input type="file" multiple="multiple" name="file2" id="file_upload2">
+         <span>
+           <img src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/cloud-upload-32.png" alt="" />
+         </span>
+       </div>
+      
+       <div class='upload-field-customized'>
+         <input type="file" multiple="multiple" name="file3" id="file_upload3">
+         <span>
+           <img src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/cloud-upload-32.png" alt="" />
+         </span>
+       </div>
+<input style="-webkit-appearance: push-button;user-select: auto;white-space: pre;align-items: flex-start;text-align: center;color: whitesmoke;box-sizing: border-box;padding: 0px 0px;border-width: 0px;border-style: unset;border-color: rgba(0, 0, 0,0);"  class="sign-in button" type="submit" value="add">
+
+      </form>
+
+      </div>
+      </div>
+      
